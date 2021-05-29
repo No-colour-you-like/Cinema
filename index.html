@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinema</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="body__wrapper">
+    <div class="cinema">
+      <header class="header">
+        <div class="header__logo">
+          <img src="img/cinema-logo.svg" alt="cinema-logo" class="header__logo-img">
+        </div>
+        <div class="header__set-movie">
+          <select name="set-movie" id="set-movie-select" class="header__set-select">
+            <option value="">Выбрать фильм</option>
+          </select>
+        </div>
+      </header>
+      <div class="movie-info">
+        <div class="movie-info__text">
+          <h1 class="movie-info__name">The Hitman</h1>
+          <div class="movie-info__release">2017</div>
+          <p class="movie-info__descr">BlaBla</p>
+          <div class="movie-info__bottom">
+            <div class="movie-info__rating">
+              <span>IMDb</span>
+              <span>7.0</span>
+            </div>
+            <div class="movie-info__common">
+              R | 1 h 58 min | Action, Comedy | 18 august 2017 (USA)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="dates">
+        <h2 class="dates__title">Дата</h2>
+        <div class="dates__days">
+          <div class="dates__date">
+            <p class="dates__month">SEP</p>
+            <div class="dates__number">18</div>
+            <p class="dates__day">SAT</p>
+          </div>
+          <div class="dates__date">
+            <p class="dates__month">SEP</p>
+            <div class="dates__number">18</div>
+            <p class="dates__day">SAT</p>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="cinema-settings">
+        <div class="cinema-name">
+          <h2 class="cinema-name__title">Cinema</h2>
+          <select name="cinema-select" id="cinema-select" class="cinema-name__select">
+            <option value="CinemaOne">CinemaOne</option>
+          </select>
+        </div>
+        <div class="cinema-time">
+          <h2 class="cinema-time__title">Time</h2>
+          <select name="cinema-time-select" id="cinema-time-select" class="cinema-time__select">
+            <option value="TimeOne">TimeOne</option>
+          </select>
+        </div>
+        <div class="seats-examples">
+          <div class="seat-example">
+            <div class="seat seat-available"></div>
+            <p class="seat__descr">Свободно</p>
+          </div>
+          <div class="seat-example">
+            <div class="seat seat-booked"></div>
+            <p class="seat__descr">Резерв</p>
+          </div>
+          <div class="seat-example">
+            <div class="seat"></div>
+            <p class="seat__descr">Продано</p>
+          </div>
+          <div class="seat-example">
+            <div class="seat seat-selected"></div>
+            <p class="seat__descr">Выбрано</p>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="cinema-hall">
+        <ul class="cinema-row__name">
+          <li class="row__name">A</li>
+          <li class="row__name">B</li>
+          <li class="row__name">C</li>
+          <li class="row__name">D</li>
+          <li class="row__name">E</li>
+          <li class="row__name">G</li>
+          <li class="row__name">H</li>
+          <li class="row__name">I</li>
+        </ul>
+        <div class="cinema-seats">
+          <ul class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+        </div>
+        <ul class="cinema-row__name">
+          <li class="row__name">A</li>
+          <li class="row__name">B</li>
+          <li class="row__name">C</li>
+          <li class="row__name">D</li>
+          <li class="row__name">E</li>
+          <li class="row__name">G</li>
+          <li class="row__name">H</li>
+          <li class="row__name">I</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

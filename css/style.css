@@ -1,0 +1,285 @@
+@font-face {
+  font-family: "Futuralightc";
+  src: url("../fonts/futuralightc.woff2") format("woff2"), url("../fonts/futuralightc.otf") format("otf");
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Futuralightc', sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+input, button, textarea {
+  font-family: 'Futuralightc', sans-serif;
+  outline: none;
+}
+
+button {
+  font-family: 'Futuralightc', sans-serif;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+a, a:visited, a:hover {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+.body__wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#a2a6d6, #5D6392FF);
+}
+
+.cinema {
+  position: relative;
+  width: 1400px;
+  height: 1200px;
+  background-color: #303561;
+}
+
+.header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 0;
+  width: 100%;
+  padding: 30px;
+  z-index: 1;
+}
+
+.header__logo {
+  width: 40px;
+  height: 40px;
+}
+
+.header__set-movie {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header__set-select {
+  padding: 5px 10px;
+}
+
+.movie-info {
+  position: relative;
+  padding: 120px 180px;
+  margin-bottom: 40px;
+  background: url(../img/main-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: top;
+  box-shadow: inset 0 -20px 30px 5px #303561;
+}
+
+.movie-info:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(48, 53, 97, 0.7);
+}
+
+.movie-info__text {
+  position: relative;
+  z-index: 1;
+}
+
+.movie-info__name {
+  font-size: 45px;
+}
+
+.movie-info__release {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.movie-info__descr {
+  font-size: 20px;
+  color: #AEB1CCFF;
+  margin-bottom: 30px;
+}
+
+.movie-info__bottom {
+  display: flex;
+  align-items: center;
+}
+
+.movie-info__bottom span {
+  font-size: 25px;
+}
+
+.movie-info__rating {
+  margin-right: 30px;
+}
+
+.movie-info__common {
+  font-size: 20px;
+  color: #AEB1CCFF;
+}
+
+.line {
+  width: 1100px;
+  height: 1px;
+  margin: 20px auto;
+  background-color: #4a4e75;
+}
+
+.dates {
+  margin: 0 150px;
+}
+
+.dates__title {
+  margin-bottom: 15px;
+}
+
+.dates__days {
+  display: flex;
+  align-items: center;
+}
+
+.dates__date {
+  width: 70px;
+  text-align: center;
+  color: #6F75AA;
+}
+
+.dates__number {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.dates__month, .dates__day {
+  font-size: 14px;
+}
+
+.cinema-settings {
+  margin: 0 150px;
+  display: flex;
+  align-items: center;
+}
+
+.cinema-name {
+  margin-right: 80px;
+}
+
+.cinema-name__title, .cinema-time__title {
+  margin-bottom: 15px;
+}
+
+.cinema-name__select, .cinema-time__select {
+  padding: 10px 40px 10px 10px;
+}
+
+.seat {
+  position: relative;
+  width: 22px;
+  height: 12px;
+  border-radius: 3px;
+  background-color: #6A71AC;
+  cursor: pointer;
+}
+
+.seat:after {
+  position: absolute;
+  content: '';
+  width: 15px;
+  height: 3px;
+  bottom: -5px;
+  left: 50%;
+  border-radius: 30%;
+  transform: translateX(-50%);
+  background-color: inherit;
+}
+
+.seat-available {
+  background-color: #FDB46C;
+}
+
+.seat-booked {
+  background-color: #2BA1FD;
+}
+
+.seat-selected {
+  background-color: #F4667EFF;
+}
+
+.seat__descr {
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.seats-examples {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.seat-example {
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.seat-example .seat {
+  cursor: auto;
+}
+
+.cinema-hall {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 150px;
+}
+
+.cinema-seats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cinema-row__single {
+  display: flex;
+  align-items: center;
+  margin-bottom: 37px;
+}
+
+.cinema-row__single .seat {
+  margin-right: 20px;
+}
+
+.row__name {
+  margin-bottom: 29px;
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 600;
+}
