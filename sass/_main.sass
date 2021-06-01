@@ -20,13 +20,19 @@
     left: 50%
     transform: translateX(-50%)
   &__set-select 
-    padding: 5px 10px
+    padding: 10px 20px
+    border-color: #4a4e75
+    background-color: rgba(#414886, 0.6)
+    color: #fff
+    font-size: 25px
+    outline: none
 
 .movie-info 
   position: relative
   padding: 120px 180px
+  height: 450px
   margin-bottom: 40px
-  background: url(../img/main-bg.jpg) no-repeat
+  background-repeat: no-repeat
   background-size: cover 
   background-position: top
   box-shadow: inset 0 -20px 30px 5px #303561
@@ -74,10 +80,16 @@
   &__days 
     display: flex
     align-items: center
+    justify-content: space-between
   &__date 
-    width: 70px
+    width: 75px
+    padding: 5px 0
     text-align: center
     color: #6F75AA
+    cursor: pointer
+    transition: 0.3s
+    &:hover 
+      background-color: #363F73
   &__number 
     font-size: 30px
     font-weight: 600
@@ -95,7 +107,12 @@
     margin-bottom: 15px
   &-name__select, &-time__select 
     padding: 10px 40px 10px 10px
-
+    background-color: #303561
+    color: #fff
+    border-color: #606699FF
+    font-size: 20px
+    outline: none
+       
 .seat 
   position: relative
   width: 22px 
@@ -103,18 +120,43 @@
   border-radius: 3px
   background-color: #6A71AC
   cursor: pointer
+  transition: 0.3s
+  &:hover 
+    transform: scale(1.3)
+    .seat-tooltip 
+      transform: scale(1) translateX(-50%)
+      animation: tooltipShow
+      animation-duration: 0.5s
   &:after 
     position: absolute
     content: ''
     width: 15px
-    height: 3px 
+    height: 5px 
     bottom: -5px
     left: 50%
     border-radius: 30%
     transform: translateX(-50%)
     background-color: inherit
-  &-available 
+  &-tooltip
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 2px 8px
+    background-color: #AAADC9FF
+    bottom: 15px
+    left: 50%
+    transform: translateX(-50%)
+    &__block 
+      padding: 3px 6px
+      font-size: 18px
+      text-align: center
+    &__row-name, &__seat-num
+      font-size: 25px
+      font-weight: 600
+  &-sold
     background-color: #FDB46C
+    pointer-events: none
   &-booked
     background-color: #2BA1FD
   &-selected
@@ -122,7 +164,6 @@
   &__descr 
     margin-left: 20px
     font-size: 18px
-
 
 .seats-examples 
   display: flex
@@ -135,7 +176,9 @@
   padding: 10px 30px
   .seat 
     cursor: auto
-
+    &:hover 
+      transform: scale(1)
+      
 .cinema
   &-hall
     display: flex
@@ -151,10 +194,22 @@
     margin-bottom: 37px
     .seat 
       margin-right: 20px
-  
+  &-screen 
+    width: 1000px 
+    height: 1px 
+    margin: 0 auto 50px
+    background-color: #AEB1CCFF
+    box-shadow: 0 5px 15px 5px #7dc8fa
+
 .row 
   &__name 
     margin-bottom: 29px
     font-size: 20px
     line-height: 1
     font-weight: 600
+
+@keyframes tooltipShow
+  0%
+    opacity: 0
+  100%
+    opacity: 1

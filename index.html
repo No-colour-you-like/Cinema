@@ -22,41 +22,17 @@
         </div>
         <div class="header__set-movie">
           <select name="set-movie" id="set-movie-select" class="header__set-select">
-            <option value="">Выбрать фильм</option>
+            <option value="Taxi Driver">Таксист</option>
+            <option value="Pulp Fiction">Криминальное чтиво</option>
+            <option value="The Godfather">Крестный отец</option>
           </select>
         </div>
       </header>
-      <div class="movie-info">
-        <div class="movie-info__text">
-          <h1 class="movie-info__name">The Hitman</h1>
-          <div class="movie-info__release">2017</div>
-          <p class="movie-info__descr">BlaBla</p>
-          <div class="movie-info__bottom">
-            <div class="movie-info__rating">
-              <span>IMDb</span>
-              <span>7.0</span>
-            </div>
-            <div class="movie-info__common">
-              R | 1 h 58 min | Action, Comedy | 18 august 2017 (USA)
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="movie-info-block" class="movie-info"></div>
       <div class="line"></div>
       <div class="dates">
         <h2 class="dates__title">Дата</h2>
-        <div class="dates__days">
-          <div class="dates__date">
-            <p class="dates__month">SEP</p>
-            <div class="dates__number">18</div>
-            <p class="dates__day">SAT</p>
-          </div>
-          <div class="dates__date">
-            <p class="dates__month">SEP</p>
-            <div class="dates__number">18</div>
-            <p class="dates__day">SAT</p>
-          </div>
-        </div>
+        <div id="dates-days" class="dates__days"></div>
       </div>
       <div class="line"></div>
       <div class="cinema-settings">
@@ -74,7 +50,7 @@
         </div>
         <div class="seats-examples">
           <div class="seat-example">
-            <div class="seat seat-available"></div>
+            <div class="seat"></div>
             <p class="seat__descr">Свободно</p>
           </div>
           <div class="seat-example">
@@ -82,7 +58,7 @@
             <p class="seat__descr">Резерв</p>
           </div>
           <div class="seat-example">
-            <div class="seat"></div>
+            <div class="seat seat-sold"></div>
             <p class="seat__descr">Продано</p>
           </div>
           <div class="seat-example">
@@ -92,6 +68,7 @@
         </div>
       </div>
       <div class="line"></div>
+      <div class="cinema-screen"></div>
       <div class="cinema-hall">
         <ul class="cinema-row__name">
           <li class="row__name">A</li>
@@ -99,13 +76,114 @@
           <li class="row__name">C</li>
           <li class="row__name">D</li>
           <li class="row__name">E</li>
+          <li class="row__name">F</li>
           <li class="row__name">G</li>
-          <li class="row__name">H</li>
-          <li class="row__name">I</li>
         </ul>
         <div class="cinema-seats">
-          <ul class="cinema-row__single">
+          <ul data-rowName="A" class="cinema-row__single">
             <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+          </ul>
+          <ul data-rowName="B" class="cinema-row__single">
+            <li data-seatNum="B1" class="seat"></li>
+            <li data-seatNum="B2" class="seat seat-sold"></li>
+            <li data-seatNum="B3" class="seat"></li>
+            <li data-seatNum="B4" class="seat"></li>
+            <li data-seatNum="B5" class="seat"></li>
+            <li data-seatNum="B6" class="seat"></li>
+            <li data-seatNum="B7" class="seat seat-sold"></li>
+            <li data-seatNum="B8" class="seat seat-sold"></li>
+            <li data-seatNum="B9" class="seat"></li>
+            <li data-seatNum="B10" class="seat"></li>
+            <li data-seatNum="B11" class="seat"></li>
+            <li data-seatNum="B12" class="seat"></li>
+          </ul>
+          <ul data-rowName="C" class="cinema-row__single">
+            <li data-seatNum="C1" class="seat"></li>
+            <li data-seatNum="C2" class="seat"></li>
+            <li data-seatNum="C3" class="seat seat-sold"></li>
+            <li data-seatNum="C4" class="seat seat-sold"></li>
+            <li data-seatNum="C5" class="seat"></li>
+            <li data-seatNum="C6" class="seat"></li>
+            <li data-seatNum="C7" class="seat seat-sold"></li>
+            <li data-seatNum="C8" class="seat seat-sold"></li>
+            <li data-seatNum="C9" class="seat"></li>
+            <li data-seatNum="C10" class="seat"></li>
+            <li data-seatNum="C11" class="seat"></li>
+            <li data-seatNum="C12" class="seat"></li>
+            <li data-seatNum="C13" class="seat seat-sold"></li>
+            <li data-seatNum="C14" class="seat"></li>
+            <li data-seatNum="C15" class="seat"></li>
+            <li data-seatNum="C16" class="seat seat-sold"></li>
+            <li data-seatNum="C17" class="seat"></li>
+            <li data-seatNum="C18" class="seat"></li>
+            <li data-seatNum="C19" class="seat"></li>
+          </ul>
+          <ul data-rowName="D" class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul data-rowName="E" class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+          </ul>
+          <ul data-rowName="F" class="cinema-row__single">
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
             <li class="seat"></li>
             <li class="seat"></li>
             <li class="seat"></li>
@@ -114,146 +192,23 @@
             <li class="seat"></li>
             <li class="seat"></li>
           </ul>
-          <ul class="cinema-row__single">
+          <ul data-rowName="G" class="cinema-row__single">
             <li class="seat"></li>
             <li class="seat"></li>
             <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
             <li class="seat"></li>
             <li class="seat"></li>
             <li class="seat"></li>
             <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
             <li class="seat"></li>
             <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-          </ul>
-          <ul class="cinema-row__single">
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-          </ul>
-          <ul class="cinema-row__single">
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-          </ul>
-          <ul class="cinema-row__single">
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-          </ul>
-          <ul class="cinema-row__single">
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-          </ul>
-          <ul class="cinema-row__single">
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-          </ul>
-          <ul class="cinema-row__single">
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
-            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
             <li class="seat"></li>
             <li class="seat"></li>
             <li class="seat"></li>
@@ -265,9 +220,8 @@
           <li class="row__name">C</li>
           <li class="row__name">D</li>
           <li class="row__name">E</li>
+          <li class="row__name">F</li>
           <li class="row__name">G</li>
-          <li class="row__name">H</li>
-          <li class="row__name">I</li>
         </ul>
       </div>
     </div>
