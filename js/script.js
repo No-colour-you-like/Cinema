@@ -5,6 +5,13 @@ const seats = document.querySelectorAll('.cinema-row__single'),
   movieSelect = document.querySelector('#set-movie-select'),
   movieInfoBlock = document.querySelector('#movie-info-block');
 
+const purchase = {
+  ticketPrice: 500,
+  fullPrice() {
+    return this.ticketPrice * this.seats.length;
+  }
+};
+
 
 seats.forEach(row => {
   const rowSeats = row.querySelectorAll('.seat');
@@ -20,19 +27,29 @@ seats.forEach(row => {
       e.currentTarget.innerHTML = '';
     });
 
-    
-
     seatNum.addEventListener('click', (e) => {
       e.currentTarget.classList.toggle('bought-seat');
 
-      // const selectedSeats = [];
-      // if (e.currentTarget.classList.contains('bought-seat')) {
-      //   const seatNumber = i + 1;
-      //   const seatRow = e.currentTarget.parentElement.dataset.rowname;
+      const allBoughtSeats = document.querySelectorAll('.bought-seat');
 
-      //   const boughtSeatNumber = `Ряд ${seatRow} Место ${seatNumber}`;
-      //   selectedSeats.push(boughtSeatNumber)
-      // }
+      const allBoughtSeatsNumbers = [...allBoughtSeats].map(seat => {
+        return `Ряд ${seat.dataset.seatnumber.slice(0, 1)} Место ${seat.dataset.seatnumber.slice(1, 2)}`;
+      });
+
+      purchase.seats = allBoughtSeatsNumbers;
+
+      // const modalSeatSelected = document.querySelector('#modal-seat-selected');
+      // const modalInfo = document.querySelector('#modal-info');
+
+      // const seatInfo = document.createElement('div');
+      // seatInfo.className = `right-modal__select-info`;
+      // seatInfo.innerHTML = `
+      //   <p id="modal-seat-selected" class="right-modal__select-name">${purchase.seats[0]}</p>
+      //   <p id="modal-ticket-price" class="right-modal__select-text">500 р.</p>
+      // `;
+
+      console.log(purchase.seats);
+
 
     });
   });
@@ -84,7 +101,6 @@ const updateDates = (value) => {
   const month = monthNames[addDays(value).getMonth()],
     dayName = dayNames[addDays(value).getDay()],
     day = addDays(value).getDate(),
-    // fullData = addDays(value).toISOString().split('T')[0];
     fullData = `${day} ${month} ${dayName}`;
 
   const singleDay = createDate(day, dayName, month, fullData);
@@ -117,7 +133,8 @@ const addDates = () => {
         selectedDaysText.push(day.dataset.day);
       });
 
-      selectedDaysModal.innerHTML = selectedDaysText.join('<br>');
+      purchase.day = selectedDaysText;
+      selectedDaysModal.innerHTML = purchase.day.join('<br>');
     });
   });
 };
@@ -207,5 +224,12 @@ const modalTimeSelected = document.querySelector('#modal-time-selected'),
   modalCinemaSelected = document.querySelector('#modal-cinema-selected'),
   cinemaSelect = document.querySelector('#cinema-select');
 
-timeSelect.addEventListener('change', (e) => modalTimeSelected.textContent = e.currentTarget.value);
-cinemaSelect.addEventListener('change', (e) => modalCinemaSelected.textContent = e.currentTarget.value);
+timeSelect.addEventListener('change', (e) => {
+  purchase.time = e.currentTarget.value;
+  modalTimeSelected.textContent = purchase.time;
+});
+
+cinemaSelect.addEventListener('change', (e) => {
+  purchase.cinema = e.currentTarget.value;
+  modalCinemaSelected.textContent = purchase.cinema;
+});
