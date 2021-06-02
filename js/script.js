@@ -5,8 +5,9 @@ const seats = document.querySelectorAll('.cinema-row__single'),
   movieSelect = document.querySelector('#set-movie-select'),
   movieInfoBlock = document.querySelector('#movie-info-block');
 
-seats.forEach(seat => {
-  const rowSeats = seat.querySelectorAll('.seat');
+
+seats.forEach(row => {
+  const rowSeats = row.querySelectorAll('.seat');
 
   rowSeats.forEach((seatNum, i) => {
     seatNum.addEventListener('mouseover', (e) => {
@@ -19,8 +20,20 @@ seats.forEach(seat => {
       e.currentTarget.innerHTML = '';
     });
 
+    
+
     seatNum.addEventListener('click', (e) => {
       e.currentTarget.classList.toggle('bought-seat');
+
+      // const selectedSeats = [];
+      // if (e.currentTarget.classList.contains('bought-seat')) {
+      //   const seatNumber = i + 1;
+      //   const seatRow = e.currentTarget.parentElement.dataset.rowname;
+
+      //   const boughtSeatNumber = `Ряд ${seatRow} Место ${seatNumber}`;
+      //   selectedSeats.push(boughtSeatNumber)
+      // }
+
     });
   });
 });
@@ -46,7 +59,7 @@ const createSeatTooltip = (rowName, seatNum) => {
 const createDate = (day, dayName, month, fulldata) => {
   const date = document.createElement('div');
   date.className = 'dates__date';
-  date.setAttribute('data', `${fulldata}`);
+  date.setAttribute('data-day', `${fulldata}`);
   date.innerHTML = `
     <p class="dates__month">${month}</p>
     <div class="dates__number">${day}</div>
@@ -67,10 +80,12 @@ const addDays = (days) => {
 const updateDates = (value) => {
   const monthNames = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
   const dayNames = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
-  const month = monthNames[addDays(value).getMonth()];
-  const dayName = dayNames[addDays(value).getDay()];
-  const day = addDays(value).getDate();
-  const fullData = addDays(value).toISOString().split('T')[0];
+
+  const month = monthNames[addDays(value).getMonth()],
+    dayName = dayNames[addDays(value).getDay()],
+    day = addDays(value).getDate(),
+    // fullData = addDays(value).toISOString().split('T')[0];
+    fullData = `${day} ${month} ${dayName}`;
 
   const singleDay = createDate(day, dayName, month, fullData);
 
@@ -88,9 +103,21 @@ const addDates = () => {
 
   allDates = document.querySelectorAll('.dates__date');
 
+  const selectedDaysModal = document.querySelector('#modal-date-selected');
+
   allDates.forEach(date => {
     date.addEventListener('click', (e) => {
       e.currentTarget.classList.toggle('dates-background-change');
+      e.currentTarget.classList.toggle('selected-day');
+
+      const selectedDaysBlock = datesDays.querySelectorAll('.selected-day');
+      const selectedDaysText = [];
+
+      selectedDaysBlock.forEach(day => {
+        selectedDaysText.push(day.dataset.day);
+      });
+
+      selectedDaysModal.innerHTML = selectedDaysText.join('<br>');
     });
   });
 };
@@ -115,15 +142,20 @@ const fetchMovieInfo = async (movieNumber) => {
 
   const info = createMovieInfoHtml(name, year, descr, rating, rated, time, genre, release, country);
 
+  const moviePoster = document.querySelector('#movie-poster');
+
   switch (name) {
     case 'Taxi Driver':
       movieInfoBlock.style.backgroundImage = 'url(img/taxi-driver.jpg)';
+      moviePoster.setAttribute('src', 'img/taxi-driver-poster.jpg');
       break;
     case 'Pulp Fiction':
       movieInfoBlock.style.backgroundImage = 'url(img/pulp-fiction.jpg)';
+      moviePoster.setAttribute('src', 'img/pulp-fiction-poster.jpg');
       break;
     case 'The Godfather':
       movieInfoBlock.style.backgroundImage = 'url(img/godfather.jpg)';
+      moviePoster.setAttribute('src', 'img/godfather-poster.jpg');
       break;
   }
 
@@ -168,3 +200,12 @@ movieSelect.addEventListener('change', (e) => {
       break;
   }
 });
+
+//Right modal info 
+const modalTimeSelected = document.querySelector('#modal-time-selected'),
+  timeSelect = document.querySelector('#cinema-time-select'),
+  modalCinemaSelected = document.querySelector('#modal-cinema-selected'),
+  cinemaSelect = document.querySelector('#cinema-select');
+
+timeSelect.addEventListener('change', (e) => modalTimeSelected.textContent = e.currentTarget.value);
+cinemaSelect.addEventListener('change', (e) => modalCinemaSelected.textContent = e.currentTarget.value);

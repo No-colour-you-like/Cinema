@@ -39,13 +39,25 @@
         <div class="cinema-name">
           <h2 class="cinema-name__title">Cinema</h2>
           <select name="cinema-select" id="cinema-select" class="cinema-name__select">
-            <option value="CinemaOne">CinemaOne</option>
+            <option value=""disabled selected>Выберите кинотеатр</option>
+            <option value="The Castro Theatre">The Castro Theatre</option>
+            <option value="Alamo Drafthouse">Alamo Drafthouse</option>
+            <option value="Kino International">Kino International</option>
+            <option value="Cinematheque Francaise">Cinematheque Francaise</option>
+            <option value="Rooftop Cinema">Rooftop Cinema</option>
           </select>
         </div>
         <div class="cinema-time">
           <h2 class="cinema-time__title">Time</h2>
           <select name="cinema-time-select" id="cinema-time-select" class="cinema-time__select">
-            <option value="TimeOne">TimeOne</option>
+            <option value="" disabled selected>Время</option>
+            <option value="10:00">10:00</option>
+            <option value="12:00">12:00</option>
+            <option value="14:00">14:00</option>
+            <option value="16:00">16:00</option>
+            <option value="18:00">18:00</option>
+            <option value="20:00">20:00</option>
+            <option value="22:00">22:00</option>
           </select>
         </div>
         <div class="seats-examples">
@@ -91,39 +103,39 @@
             <li class="seat seat-sold"></li>
           </ul>
           <ul data-rowName="B" class="cinema-row__single">
-            <li data-seatNum="B1" class="seat"></li>
-            <li data-seatNum="B2" class="seat seat-sold"></li>
-            <li data-seatNum="B3" class="seat"></li>
-            <li data-seatNum="B4" class="seat"></li>
-            <li data-seatNum="B5" class="seat"></li>
-            <li data-seatNum="B6" class="seat"></li>
-            <li data-seatNum="B7" class="seat seat-sold"></li>
-            <li data-seatNum="B8" class="seat seat-sold"></li>
-            <li data-seatNum="B9" class="seat"></li>
-            <li data-seatNum="B10" class="seat"></li>
-            <li data-seatNum="B11" class="seat"></li>
-            <li data-seatNum="B12" class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
           </ul>
           <ul data-rowName="C" class="cinema-row__single">
-            <li data-seatNum="C1" class="seat"></li>
-            <li data-seatNum="C2" class="seat"></li>
-            <li data-seatNum="C3" class="seat seat-sold"></li>
-            <li data-seatNum="C4" class="seat seat-sold"></li>
-            <li data-seatNum="C5" class="seat"></li>
-            <li data-seatNum="C6" class="seat"></li>
-            <li data-seatNum="C7" class="seat seat-sold"></li>
-            <li data-seatNum="C8" class="seat seat-sold"></li>
-            <li data-seatNum="C9" class="seat"></li>
-            <li data-seatNum="C10" class="seat"></li>
-            <li data-seatNum="C11" class="seat"></li>
-            <li data-seatNum="C12" class="seat"></li>
-            <li data-seatNum="C13" class="seat seat-sold"></li>
-            <li data-seatNum="C14" class="seat"></li>
-            <li data-seatNum="C15" class="seat"></li>
-            <li data-seatNum="C16" class="seat seat-sold"></li>
-            <li data-seatNum="C17" class="seat"></li>
-            <li data-seatNum="C18" class="seat"></li>
-            <li data-seatNum="C19" class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat seat-sold"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
+            <li class="seat"></li>
           </ul>
           <ul data-rowName="D" class="cinema-row__single">
             <li class="seat"></li>
@@ -223,6 +235,37 @@
           <li class="row__name">F</li>
           <li class="row__name">G</li>
         </ul>
+      </div>
+      <div class="right-modal">
+        <div class="right-modal__poster">
+          <img id="movie-poster" src="#" alt="movie-poster" class="right-modal__poster-img">
+        </div>
+        <div class="right-modal__info">
+          <h3 class="right-modal__title">Выбранные места</h3>
+          <div class="right-modal__select-info">
+            <p class="right-modal__select-name">Кинотеатр</p>
+            <p id="modal-cinema-selected" class="right-modal__select-text"></p>
+          </div>
+          <div class="right-modal__select-info">
+            <p class="right-modal__select-name">Дата</p>
+            <p id="modal-date-selected" class="right-modal__select-text"></p>
+          </div>
+          <div class="right-modal__select-info">
+            <p class="right-modal__select-name">Время</p>
+            <p id="modal-time-selected" class="right-modal__select-text"></p>
+          </div>
+          <div class="right-modal__select-info">
+            <p id="modal-seat-selected" class="right-modal__select-name">Ряд 9 Место 7</p>
+            <p id="modal-ticket-price" class="right-modal__select-text">500 р.</p>
+          </div>
+        </div>
+        <div class="right-modal__total">
+          <div class="right-modal__select-info">
+            <p class="right-modal__select-name">Всего</p>
+            <p id="modal-total-price" class="right-modal__select-total">500 р.</p>
+          </div>
+          <button class="right-modal__buy-button">Купить</button>
+        </div>
       </div>
     </div>
   </div>

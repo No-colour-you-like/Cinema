@@ -102,11 +102,11 @@
     display: flex
     align-items: center
   &-name 
-    margin-right: 80px
+    margin-right: 50px
   &-name__title, &-time__title 
     margin-bottom: 15px
   &-name__select, &-time__select 
-    padding: 10px 40px 10px 10px
+    padding: 10px 10px
     background-color: #303561
     color: #fff
     border-color: #606699FF
@@ -207,6 +207,59 @@
     font-size: 20px
     line-height: 1
     font-weight: 600
+
+.right-modal 
+  position: absolute
+  width: 350px 
+  height: 100%
+  right: 0
+  top: 0
+  padding: 50px 30px
+  background: linear-gradient(to bottom, rgba(66, 70, 104, 0.8) 0%, rgba(54, 63, 115, 0.9) 100%)
+  z-index: 5
+  &__poster 
+    width: 100%
+    box-shadow: 0 0 20px #202647
+    margin-bottom: 60px
+    &-img 
+      display: block
+  &__info 
+    margin-bottom: 20px
+    border-bottom: 1px solid #7076AA
+  &__title 
+    font-size: 26px
+    margin-bottom: 30px
+  &__select 
+    &-info 
+      display: flex
+      align-items: center
+      justify-content: space-between
+      margin-bottom: 25px
+    &-name
+      font-size: 17px
+      font-weight: 600 
+      color: #AFB2CD
+    &-text 
+      font-size: 20px
+      font-weight: 600
+      color: #ffffff
+    &-total 
+      font-size: 25px
+      font-weight: 600
+      color: #ebae80
+  &__total 
+    text-align: center
+  &__buy-button 
+    width: 200px
+    height: 50px
+    background-color: #F6657D
+    border: none
+    outline: none
+    font-size: 25px
+    font-weight: 600
+    color: #fff
+    box-shadow: 0 0 8px #F6657D
+
 
 @keyframes tooltipShow
   0%
