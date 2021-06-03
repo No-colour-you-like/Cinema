@@ -1,60 +1,103 @@
 'use strict';
 
-const seats = document.querySelectorAll('.cinema-row__single'),
+const seats = document.querySelector('.cinema-seats').querySelectorAll('.seat'),
   datesDays = document.querySelector('#dates-days'),
   movieSelect = document.querySelector('#set-movie-select'),
-  movieInfoBlock = document.querySelector('#movie-info-block');
+  movieInfoBlock = document.querySelector('#movie-info-block'),
+  modal = document.querySelector('#right-modal'),
+  modalShowBtn = document.querySelector('#modal-show-btn'),
+  buyTicketsBtn = document.querySelector('#buy-tickets-btn');
 
 const purchase = {
+  seats: '',
+  day: '',
   ticketPrice: 500,
   fullPrice() {
-    return this.ticketPrice * this.seats.length;
+    if (this.seats.length !== 0 && this.day.length !== 0) {
+      return `${this.ticketPrice * this.seats.length * this.day.length} р.`;
+    } else {
+      return '-';
+    }
   }
 };
 
+const updatePurchaseFullPrice = () => {
+  const modalTotalPrice = document.querySelector('#modal-total-price');
+  modalTotalPrice.textContent = `${purchase.fullPrice()}`;
+};
 
-seats.forEach(row => {
-  const rowSeats = row.querySelectorAll('.seat');
 
-  rowSeats.forEach((seatNum, i) => {
-    seatNum.addEventListener('mouseover', (e) => {
-      const seatNumber = i + 1;
-      const seatRow = e.currentTarget.parentElement.dataset.rowname;
-      e.currentTarget.append(createSeatTooltip(seatRow, seatNumber));
+//Make closure for call complete modal only once
+const showModalInfoClosure = () => {
+  let wasCalled = false;
+
+  return function () {
+    if (purchase.seats.length !== 0 &&
+      purchase.day.length !== 0 &&
+      purchase.cinema !== undefined &&
+      purchase.time !== undefined
+    ) {
+      if (!wasCalled) {
+        modal.classList.add('open-modal');
+        wasCalled = true;
+      }
+      buyTicketsBtn.classList.add('active-btn');
+    } else {
+      modal.classList.remove('open-modal');
+      buyTicketsBtn.classList.remove('active-btn');
+    }
+  };
+};
+
+//Modal closure
+const showModalInfoComplete = showModalInfoClosure();
+
+//Look seat info on hover and buy seat on click (add info seat in modal)
+seats.forEach(seatNum => {
+  seatNum.addEventListener('mouseover', (e) => {
+    const seatNumber = e.currentTarget.dataset.seatnumber.slice(1);
+    const seatRow = e.currentTarget.dataset.seatnumber.slice(0, 1);
+
+    e.currentTarget.append(createSeatTooltip(seatRow, seatNumber));
+  });
+
+  seatNum.addEventListener('mouseleave', (e) => {
+    e.currentTarget.innerHTML = '';
+  });
+
+  seatNum.addEventListener('click', (e) => {
+    e.currentTarget.classList.toggle('bought-seat');
+
+    const modalBoughtSeats = document.querySelector('#modal-bought-seats');
+    const allBoughtSeats = document.querySelectorAll('.bought-seat');
+
+    const allBoughtSeatsNumbers = [...allBoughtSeats].map(seat => {
+      return `Ряд ${seat.dataset.seatnumber.slice(0, 1)} Место ${seat.dataset.seatnumber.slice(1)}`;
     });
 
-    seatNum.addEventListener('mouseleave', (e) => {
-      e.currentTarget.innerHTML = '';
-    });
+    purchase.seats = allBoughtSeatsNumbers;
 
-    seatNum.addEventListener('click', (e) => {
-      e.currentTarget.classList.toggle('bought-seat');
+    const createSeatInfo = (i) => {
+      const seatInfo = document.createElement('div');
+      seatInfo.className = `right-modal__select-info`;
+      seatInfo.innerHTML = `
+        <p class="right-modal__select-name">${purchase.seats[i]}</p>
+        <p class="right-modal__select-text">${purchase.ticketPrice} р.</p>
+      `;
 
-      const allBoughtSeats = document.querySelectorAll('.bought-seat');
+      return seatInfo;
+    };
 
-      const allBoughtSeatsNumbers = [...allBoughtSeats].map(seat => {
-        return `Ряд ${seat.dataset.seatnumber.slice(0, 1)} Место ${seat.dataset.seatnumber.slice(1, 2)}`;
-      });
+    modalBoughtSeats.innerHTML = '';
 
-      purchase.seats = allBoughtSeatsNumbers;
+    purchase.seats.forEach((seat, i) => modalBoughtSeats.append(createSeatInfo(i)));
 
-      // const modalSeatSelected = document.querySelector('#modal-seat-selected');
-      // const modalInfo = document.querySelector('#modal-info');
-
-      // const seatInfo = document.createElement('div');
-      // seatInfo.className = `right-modal__select-info`;
-      // seatInfo.innerHTML = `
-      //   <p id="modal-seat-selected" class="right-modal__select-name">${purchase.seats[0]}</p>
-      //   <p id="modal-ticket-price" class="right-modal__select-text">500 р.</p>
-      // `;
-
-      console.log(purchase.seats);
-
-
-    });
+    updatePurchaseFullPrice();
+    showModalInfoComplete();
   });
 });
 
+//Create seat tooltip html
 const createSeatTooltip = (rowName, seatNum) => {
   const seatTooltop = document.createElement('div');
   seatTooltop.className = 'seat-tooltip';
@@ -135,6 +178,9 @@ const addDates = () => {
 
       purchase.day = selectedDaysText;
       selectedDaysModal.innerHTML = purchase.day.join('<br>');
+
+      updatePurchaseFullPrice();
+      showModalInfoComplete();
     });
   });
 };
@@ -183,6 +229,7 @@ const fetchMovieInfo = async (movieNumber) => {
 
 fetchMovieInfo(0);
 
+//Create movie info html
 const createMovieInfoHtml = (name, year, descr, rating, rated, time, genre, release, country) => {
   const movieInfo = document.createElement('div');
   movieInfo.className = 'movie-info__text';
@@ -204,6 +251,8 @@ const createMovieInfoHtml = (name, year, descr, rating, rated, time, genre, rele
   return movieInfo;
 };
 
+
+// Change movie info by click in select block
 movieSelect.addEventListener('change', (e) => {
   switch (e.currentTarget.value) {
     case 'Taxi Driver':
@@ -218,7 +267,7 @@ movieSelect.addEventListener('change', (e) => {
   }
 });
 
-//Right modal info 
+//Right modal info add cinema name and time
 const modalTimeSelected = document.querySelector('#modal-time-selected'),
   timeSelect = document.querySelector('#cinema-time-select'),
   modalCinemaSelected = document.querySelector('#modal-cinema-selected'),
@@ -227,9 +276,19 @@ const modalTimeSelected = document.querySelector('#modal-time-selected'),
 timeSelect.addEventListener('change', (e) => {
   purchase.time = e.currentTarget.value;
   modalTimeSelected.textContent = purchase.time;
+  showModalInfoComplete();
 });
 
 cinemaSelect.addEventListener('change', (e) => {
   purchase.cinema = e.currentTarget.value;
   modalCinemaSelected.textContent = purchase.cinema;
+  showModalInfoComplete();
+});
+
+//Show modal on click
+modalShowBtn.addEventListener('click', () => modal.classList.toggle('open-modal'));
+
+
+buyTicketsBtn.addEventListener('click', () => {
+  console.log('1');
 });

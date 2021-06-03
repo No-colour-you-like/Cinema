@@ -3,6 +3,7 @@
   width: 1400px 
   height: 1200px
   background-color: #303561
+  overflow: hidden
 
 .header
   position: absolute
@@ -123,10 +124,6 @@
   transition: 0.3s
   &:hover 
     transform: scale(1.3)
-    .seat-tooltip 
-      transform: scale(1) translateX(-50%)
-      animation: tooltipShow
-      animation-duration: 0.5s
   &:after 
     position: absolute
     content: ''
@@ -159,6 +156,7 @@
     pointer-events: none
   &-booked
     background-color: #2BA1FD
+    pointer-events: none
   &-selected
     background-color: #F4667EFF
   &__descr 
@@ -214,9 +212,25 @@
   height: 100%
   right: 0
   top: 0
+  transform: translateX(100%)
   padding: 50px 30px
   background: linear-gradient(to bottom, rgba(66, 70, 104, 0.8) 0%, rgba(54, 63, 115, 0.9) 100%)
   z-index: 5
+  transition: 0.4s
+  &__show-btn
+    position: absolute
+    left: -100px
+    top: 30px
+    width: 80px
+    height: 80px
+    padding: 10px
+    border-radius: 50%
+    background-color: #202647
+    box-shadow: 0 0 10px #202647
+    cursor: pointer
+    transition: 0.3s
+    &:hover 
+      box-shadow: 0 0 20px #7076AA
   &__poster 
     width: 100%
     box-shadow: 0 0 20px #202647
@@ -249,17 +263,17 @@
       color: #ebae80
   &__total 
     text-align: center
-  &__buy-button 
+  &__buy-btn
     width: 200px
     height: 50px
-    background-color: #F6657D
+    background-color: #888888
     border: none
     outline: none
     font-size: 25px
     font-weight: 600
     color: #fff
-    box-shadow: 0 0 8px #F6657D
-
+    box-shadow: 0 0 8px #888888
+    pointer-events: none
 
 @keyframes tooltipShow
   0%
