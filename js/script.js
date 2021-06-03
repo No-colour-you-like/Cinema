@@ -6,7 +6,8 @@ const seats = document.querySelector('.cinema-seats').querySelectorAll('.seat'),
   movieInfoBlock = document.querySelector('#movie-info-block'),
   modal = document.querySelector('#right-modal'),
   modalShowBtn = document.querySelector('#modal-show-btn'),
-  buyTicketsBtn = document.querySelector('#buy-tickets-btn');
+  buyTicketsBtn = document.querySelector('#buy-tickets-btn'),
+  completeModalClose = document.querySelector('#complete-modal-close');
 
 const purchase = {
   seats: '',
@@ -225,6 +226,8 @@ const fetchMovieInfo = async (movieNumber) => {
   movieInfoBlock.innerHTML = '';
 
   movieInfoBlock.append(info);
+
+  purchase.movieName = name;
 };
 
 fetchMovieInfo(0);
@@ -288,7 +291,35 @@ cinemaSelect.addEventListener('change', (e) => {
 //Show modal on click
 modalShowBtn.addEventListener('click', () => modal.classList.toggle('open-modal'));
 
+//Create ticket info 
+const createTicketInfo = (movieName, seat, cinema, date, time) => {
+  const modalInfo = document.querySelector('#complete-modal-info');
+  modalInfo.innerHTML = `
+    <p class="complete-modal__info-title">Фильм</p>
+    <p class="complete-modal__info-text">${movieName}</p>
+    <p class="complete-modal__info-title">Ваши места</p>
+    <p class="complete-modal__info-text">${seat}</p>
+    <p class="complete-modal__info-title">Кинотеатр</p>
+    <p class="complete-modal__info-text">${cinema}</p>
+    <p class="complete-modal__info-title">Дата</p>
+    <p class="complete-modal__info-text">${date}</p>
+    <p class="complete-modal__info-title">Время</p>
+    <p class="complete-modal__info-text">${time}</p>
+  `;
+};
 
+const completeModal = document.querySelector('#complete-modal');
 buyTicketsBtn.addEventListener('click', () => {
-  console.log('1');
+
+  const movieName = purchase.movieName,
+    seat = purchase.seats.join('<br>'),
+    cinema = purchase.cinema,
+    date = purchase.day.join('<br>'),
+    time = purchase.time;
+
+  createTicketInfo(movieName, seat, cinema, date, time);
+
+  completeModal.classList.add('show-complete-modal');
 });
+
+completeModalClose.addEventListener('click', () => completeModal.classList.remove('show-complete-modal'));

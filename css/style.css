@@ -439,6 +439,76 @@ h2 {
   pointer-events: none;
 }
 
+.complete-modal {
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(48, 53, 97, 0.7);
+  z-index: 10;
+}
+
+.complete-modal__main {
+  position: relative;
+  width: 500px;
+  padding: 20px;
+  color: #fff;
+  background-color: #282c4e;
+  box-shadow: 0 0 10px #282c4e;
+}
+
+.complete-modal__close {
+  position: absolute;
+  width: 120px;
+  right: -60px;
+  top: -40px;
+  transform: rotate(-30deg);
+}
+
+.complete-modal__close-btn {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  top: 33px;
+  left: 2px;
+  border-radius: 50%;
+  transform: rotate(30deg);
+  background-color: transparent;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.complete-modal__title {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.complete-modal__info {
+  text-align: center;
+}
+
+.complete-modal__info-title {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.complete-modal__info-text {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #ebae80;
+}
+
+.complete-modal__subtitle {
+  text-align: center;
+  font-size: 25px;
+}
+
 @keyframes tooltipShow {
   0% {
     opacity: 0;
@@ -470,4 +540,8 @@ h2 {
 .active-btn {
   background-color: #F6657D;
   pointer-events: auto;
+}
+
+.show-complete-modal {
+  display: flex;
 }
