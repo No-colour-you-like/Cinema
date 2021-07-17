@@ -12,10 +12,10 @@ const seats = document.querySelector('.cinema-seats').querySelectorAll('.seat'),
 const purchase = {
   seats: '',
   day: '',
-  ticketPrice: 500,
+  ticketPrice: 10,
   fullPrice() {
     if (this.seats.length !== 0 && this.day.length !== 0) {
-      return `${this.ticketPrice * this.seats.length * this.day.length} р.`;
+      return `$ ${this.ticketPrice * this.seats.length * this.day.length}`;
     } else {
       return '-';
     }
@@ -73,7 +73,7 @@ seats.forEach(seatNum => {
     const allBoughtSeats = document.querySelectorAll('.bought-seat');
 
     const allBoughtSeatsNumbers = [...allBoughtSeats].map(seat => {
-      return `Ряд ${seat.dataset.seatnumber.slice(0, 1)} Место ${seat.dataset.seatnumber.slice(1)}`;
+      return `Row ${seat.dataset.seatnumber.slice(0, 1)} Seat ${seat.dataset.seatnumber.slice(1)}`;
     });
 
     purchase.seats = allBoughtSeatsNumbers;
@@ -83,7 +83,7 @@ seats.forEach(seatNum => {
       seatInfo.className = `right-modal__select-info`;
       seatInfo.innerHTML = `
         <p class="right-modal__select-name">${purchase.seats[i]}</p>
-        <p class="right-modal__select-text">${purchase.ticketPrice} р.</p>
+        <p class="right-modal__select-text">$ ${purchase.ticketPrice}</p>
       `;
 
       return seatInfo;
@@ -104,11 +104,11 @@ const createSeatTooltip = (rowName, seatNum) => {
   seatTooltop.className = 'seat-tooltip';
   seatTooltop.innerHTML = `
   <div class="seat-tooltip__block">
-    <p class="seat-tooltip__row">Ряд</p>
+    <p class="seat-tooltip__row">Row</p>
     <p class="seat-tooltip__row-name">${rowName}</p>
   </div>
   <div class="seat-tooltip__block">
-    <p class="seat-tooltip__seat">Место</p>
+    <p class="seat-tooltip__seat">Seat</p>
     <p class="seat-tooltip__seat-num">${seatNum}</p>
   </div>
   `;
@@ -139,8 +139,8 @@ const addDays = (days) => {
 
 //Create current day block
 const updateDates = (value) => {
-  const monthNames = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
-  const dayNames = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const month = monthNames[addDays(value).getMonth()],
     dayName = dayNames[addDays(value).getDay()],
@@ -295,15 +295,15 @@ modalShowBtn.addEventListener('click', () => modal.classList.toggle('open-modal'
 const createTicketInfo = (movieName, seat, cinema, date, time) => {
   const modalInfo = document.querySelector('#complete-modal-info');
   modalInfo.innerHTML = `
-    <p class="complete-modal__info-title">Фильм</p>
+    <p class="complete-modal__info-title">Movie</p>
     <p class="complete-modal__info-text">${movieName}</p>
-    <p class="complete-modal__info-title">Ваши места</p>
+    <p class="complete-modal__info-title">Seats</p>
     <p class="complete-modal__info-text">${seat}</p>
-    <p class="complete-modal__info-title">Кинотеатр</p>
+    <p class="complete-modal__info-title">Cinema</p>
     <p class="complete-modal__info-text">${cinema}</p>
-    <p class="complete-modal__info-title">Дата</p>
+    <p class="complete-modal__info-title">Date</p>
     <p class="complete-modal__info-text">${date}</p>
-    <p class="complete-modal__info-title">Время</p>
+    <p class="complete-modal__info-title">Time</p>
     <p class="complete-modal__info-text">${time}</p>
   `;
 };

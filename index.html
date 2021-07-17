@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinema</title>
 
+  <link rel="icon" href="img/clapperboard.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
     crossorigin="anonymous" />
@@ -22,16 +23,16 @@
         </div>
         <div class="header__set-movie">
           <select name="set-movie" id="set-movie-select" class="header__set-select">
-            <option value="Taxi Driver">Таксист</option>
-            <option value="Pulp Fiction">Криминальное чтиво</option>
-            <option value="The Godfather">Крестный отец</option>
+            <option value="Taxi Driver">Taxi Driver</option>
+            <option value="Pulp Fiction">Pulp Fiction</option>
+            <option value="The Godfather">The Godfather</option>
           </select>
         </div>
       </header>
       <div id="movie-info-block" class="movie-info"></div>
       <div class="line"></div>
       <div class="dates">
-        <h2 class="dates__title">Дата</h2>
+        <h2 class="dates__title">Date</h2>
         <div id="dates-days" class="dates__days"></div>
       </div>
       <div class="line"></div>
@@ -39,7 +40,7 @@
         <div class="cinema-name">
           <h2 class="cinema-name__title">Cinema</h2>
           <select name="cinema-select" id="cinema-select" class="cinema-name__select">
-            <option value="" disabled selected>Выберите кинотеатр</option>
+            <option value="" disabled selected>Select cinema</option>
             <option value="The Castro Theatre">The Castro Theatre</option>
             <option value="Alamo Drafthouse">Alamo Drafthouse</option>
             <option value="Kino International">Kino International</option>
@@ -50,7 +51,7 @@
         <div class="cinema-time">
           <h2 class="cinema-time__title">Time</h2>
           <select name="cinema-time-select" id="cinema-time-select" class="cinema-time__select">
-            <option value="" disabled selected>Время</option>
+            <option value="" disabled selected>Time</option>
             <option value="10:00">10:00</option>
             <option value="12:00">12:00</option>
             <option value="14:00">14:00</option>
@@ -63,19 +64,19 @@
         <div class="seats-examples">
           <div class="seat-example">
             <div class="seat"></div>
-            <p class="seat__descr">Свободно</p>
+            <p class="seat__descr">Available</p>
           </div>
           <div class="seat-example">
             <div class="seat seat-booked"></div>
-            <p class="seat__descr">Резерв</p>
+            <p class="seat__descr">Reserved</p>
           </div>
           <div class="seat-example">
             <div class="seat seat-sold"></div>
-            <p class="seat__descr">Продано</p>
+            <p class="seat__descr">Sold</p>
           </div>
           <div class="seat-example">
             <div class="seat seat-selected"></div>
-            <p class="seat__descr">Выбрано</p>
+            <p class="seat__descr">Selected</p>
           </div>
         </div>
       </div>
@@ -244,27 +245,27 @@
           <img id="movie-poster" src="#" alt="movie-poster" class="right-modal__poster-img">
         </div>
         <div class="right-modal__info">
-          <h3 class="right-modal__title">Выбранные места</h3>
+          <h3 class="right-modal__title">Selected seats</h3>
           <div class="right-modal__select-info">
-            <p class="right-modal__select-name">Кинотеатр</p>
+            <p class="right-modal__select-name">Cinema</p>
             <p id="modal-cinema-selected" class="right-modal__select-text"></p>
           </div>
           <div class="right-modal__select-info">
-            <p class="right-modal__select-name">Дата</p>
+            <p class="right-modal__select-name">Date</p>
             <p id="modal-date-selected" class="right-modal__select-text"></p>
           </div>
           <div class="right-modal__select-info">
-            <p class="right-modal__select-name">Время</p>
+            <p class="right-modal__select-name">Time</p>
             <p id="modal-time-selected" class="right-modal__select-text"></p>
           </div>
           <div id="modal-bought-seats" class="right-modal__bought-seats"></div>
         </div>
         <div class="right-modal__total">
           <div class="right-modal__select-info">
-            <p class="right-modal__select-name">Всего</p>
+            <p class="right-modal__select-name">Total</p>
             <p id="modal-total-price" class="right-modal__select-total">-</p>
           </div>
-          <button id="buy-tickets-btn" class="right-modal__buy-btn">Купить</button>
+          <button id="buy-tickets-btn" class="right-modal__buy-btn">Buy</button>
         </div>
       </div>
       <div id="complete-modal" class="complete-modal">
@@ -273,9 +274,9 @@
             <img src="img/cinema-modal-icon.svg" alt="close-btn" class="complete-modal__close-img">
             <div id="complete-modal-close" class="complete-modal__close-btn"></div>
           </div>
-          <h1 class="complete-modal__title">Покупка совершена</h1>
+          <h1 class="complete-modal__title">Purchase completed</h1>
           <div id="complete-modal-info" class="complete-modal__info"></div>
-          <p class="complete-modal__subtitle">Приятного просмотра!</p>
+          <p class="complete-modal__subtitle">Enjoy the show!</p>
         </div>
       </div>
     </div>
